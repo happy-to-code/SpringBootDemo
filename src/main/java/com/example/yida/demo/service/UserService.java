@@ -1,13 +1,11 @@
 package com.example.yida.demo.service;
 
 import com.example.yida.demo.common.model.response.CommonCode;
-import com.example.yida.demo.common.model.response.QueryResponseResult;
 import com.example.yida.demo.common.model.response.QueryResult;
 import com.example.yida.demo.common.model.response.ResponseResult;
 import com.example.yida.demo.dao.UserRepository;
 import com.example.yida.demo.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
