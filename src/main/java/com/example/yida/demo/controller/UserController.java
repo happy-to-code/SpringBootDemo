@@ -20,6 +20,7 @@ public class UserController {
 
     /**
      * 保存用户信息
+     *
      * @param user
      * @return
      */
@@ -31,10 +32,21 @@ public class UserController {
 
     /**
      * 查询所有用户
+     *
      * @return
      */
     @GetMapping("findAllUser")
-    public QueryResult<User> findAll(){
+    public QueryResult<User> findAll() {
         return userService.findAll();
+    }
+
+    /**
+     * 根据ID查询用户
+     *
+     * @return
+     */
+    @GetMapping("findById/{id}")
+    public User findById(@PathVariable("id") Long id) {
+        return userService.findById(id);
     }
 }

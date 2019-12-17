@@ -3,6 +3,7 @@ package com.example.yida.demo.service;
 import com.example.yida.demo.common.model.response.CommonCode;
 import com.example.yida.demo.common.model.response.QueryResult;
 import com.example.yida.demo.common.model.response.ResponseResult;
+import com.example.yida.demo.dao.UserMapper;
 import com.example.yida.demo.dao.UserRepository;
 import com.example.yida.demo.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,10 @@ import java.util.List;
 @Service
 public class UserService {
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
+
+    @Autowired
+    private UserMapper userMapper;
 
     /**
      * 保存用户信息
@@ -30,6 +34,7 @@ public class UserService {
     @Transactional
     public ResponseResult saveUser(User user) {
         User save = userRepository.save(user);
+        System.out.println(save);
         return new ResponseResult(CommonCode.SUCCESS);
     }
 
@@ -46,5 +51,15 @@ public class UserService {
         queryResult.setTotal(users.size());
 
         return queryResult;
+    }
+
+    /**
+     * 根据ID查询用户
+     *
+     * @param id
+     * @return
+     */
+    public User findById(Long id) {
+        return userMapper.findById(id);
     }
 }
