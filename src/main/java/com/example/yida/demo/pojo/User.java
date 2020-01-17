@@ -1,5 +1,6 @@
 package com.example.yida.demo.pojo;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -36,4 +37,21 @@ public class User {
      * 密码
      */
     private String passWord;
+
+    public User(String loginName, String userName, String passWord) {
+        this.loginName = loginName;
+        this.userName = userName;
+        this.passWord = passWord;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("User{");
+        sb.append("id=").append(id);
+        sb.append(", loginName='").append(loginName).append('\'');
+        sb.append(", userName='").append(userName).append('\'');
+        sb.append(", passWord='").append(passWord).append('\'');
+        sb.append('}');
+        return sb.toString();
+    }
 }
