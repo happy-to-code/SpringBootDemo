@@ -13,6 +13,8 @@ import java.util.Map;
  * @Date: 2019/12/18
  */
 public class JwtTest {
+    private static Clock clock = DefaultClock.INSTANCE;
+
     public static void main(String[] args) {
         Map<String, Object> claims = new HashMap<>(4);
         claims.put("ip", "127.0.0.8");
@@ -47,8 +49,6 @@ public class JwtTest {
         Jws<Claims> claims = Jwts.parser().setSigningKey("my1Secret").parseClaimsJws(token);
         return claims.getBody();
     }
-
-    private static Clock clock = DefaultClock.INSTANCE;
 
     /**
      * 生成token
