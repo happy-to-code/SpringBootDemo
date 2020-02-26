@@ -62,7 +62,7 @@ public class MyWebSocketHandler extends SimpleChannelInboundHandler<TextWebSocke
 
             Map paramMap = getUrlParams(uri);
             System.out.println("接收到的参数是：" + JSON.toJSONString(paramMap));
-            //如果url包含参数，需要处理
+            // 如果url包含参数，需要处理
             if (uri.contains("?")) {
                 String newUri = uri.substring(0, uri.indexOf("?"));
                 System.out.println(newUri);

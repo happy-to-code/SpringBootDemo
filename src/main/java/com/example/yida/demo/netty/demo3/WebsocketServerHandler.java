@@ -6,8 +6,6 @@ import io.netty.handler.codec.http.FullHttpRequest;
 import io.netty.handler.codec.http.websocketx.*;
 import org.springframework.stereotype.Component;
 
-import javax.websocket.Session;
-import java.io.IOException;
 import java.util.Date;
 
 @Component
