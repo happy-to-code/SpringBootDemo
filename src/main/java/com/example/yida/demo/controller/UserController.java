@@ -2,10 +2,14 @@ package com.example.yida.demo.controller;
 
 import com.example.yida.demo.common.model.response.QueryResult;
 import com.example.yida.demo.common.model.response.ResponseResult;
+import com.example.yida.demo.netty.demo1.MyWebSocketHandler;
+import com.example.yida.demo.netty.demo3.WebsocketServerHandler;
 import com.example.yida.demo.pojo.User;
 import com.example.yida.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.io.IOException;
 
 /**
  * @Describle:
@@ -17,6 +21,12 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
     @Autowired
     UserService userService;
+
+    @Autowired
+    MyWebSocketHandler myWebSocketHandler;
+
+    @Autowired
+    private WebsocketServerHandler websocketServerHandler;
 
     /**
      * 保存用户信息
@@ -36,7 +46,8 @@ public class UserController {
      * @return
      */
     @GetMapping("findAllUser")
-    public QueryResult<User> findAll() {
+    public QueryResult<User> findAll() throws IOException {
+        myWebSocketHandler.sendAllMessage("______AAAAA______");
         return userService.findAll();
     }
 
