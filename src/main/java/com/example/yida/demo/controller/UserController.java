@@ -2,13 +2,18 @@ package com.example.yida.demo.controller;
 
 import com.example.yida.demo.common.model.response.QueryResult;
 import com.example.yida.demo.common.model.response.ResponseResult;
+import com.example.yida.demo.common.utils.HttpServletRequestUtil;
 import com.example.yida.demo.netty.demo1.MyWebSocketHandler;
 import com.example.yida.demo.netty.demo3.WebsocketServerHandler;
 import com.example.yida.demo.pojo.User;
 import com.example.yida.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 /**
@@ -28,14 +33,22 @@ public class UserController {
     @Autowired
     private WebsocketServerHandler websocketServerHandler;
 
+    @Autowired
+    private Environment env;
+
     /**
      * 保存用户信息
      *
      * @param user
      * @return
      */
-    @PutMapping("save")
-    public ResponseResult saveUser(@RequestParam("mapper") User user) {
+    @PostMapping("save")
+    public ResponseResult saveUser(@RequestBody User user) {
+        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder
+                .getRequestAttributes())
+                .getRequest();
+        String s = HttpServletRequestUtil.readAsChars(request);
+        System.out.println(s);
         ResponseResult responseResult = userService.saveUser(user);
         return responseResult;
     }
@@ -48,6 +61,9 @@ public class UserController {
     @GetMapping("findAllUser")
     public QueryResult<User> findAll() throws IOException {
         myWebSocketHandler.sendAllMessage("______AAAAA______");
+        System.out.println(env.getProperty("wework.chat.callBackCorpID1"));
+        System.out.println(env.getProperty("wework.chat.callBackToken1"));
+        System.out.println(env.getProperty("wework.chat.callBackEncodingAESKey1"));
         return userService.findAll();
     }
 
