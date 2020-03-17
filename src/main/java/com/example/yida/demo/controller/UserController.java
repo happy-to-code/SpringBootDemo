@@ -48,8 +48,9 @@ public class UserController {
                 .getRequestAttributes())
                 .getRequest();
         String s = HttpServletRequestUtil.readAsChars(request);
-        System.out.println(s);
+        System.out.println(s + "====");
         ResponseResult responseResult = userService.saveUser(user);
+
         return responseResult;
     }
 
@@ -64,6 +65,7 @@ public class UserController {
         System.out.println(env.getProperty("wework.chat.callBackCorpID1"));
         System.out.println(env.getProperty("wework.chat.callBackToken1"));
         System.out.println(env.getProperty("wework.chat.callBackEncodingAESKey1"));
+
         return userService.findAll();
     }
 
@@ -74,6 +76,7 @@ public class UserController {
      */
     @GetMapping("findById/{id}")
     public User findById(@PathVariable("id") Long id) {
+        System.out.println(111);
         return userService.findById(id);
     }
 }

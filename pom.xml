@@ -242,7 +242,6 @@
                 <version>2.2.3.RELEASE</version>
                 <configuration>
                     <fork>true</fork>
-                    <addResources>true</addResources>
                 </configuration>
             </plugin>
         </plugins>
