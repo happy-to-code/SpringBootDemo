@@ -6,6 +6,7 @@ import com.example.yida.demo.dao.UserMapper;
 import com.example.yida.demo.dao.UserRepository;
 import com.example.yida.demo.pojo.User;
 import com.example.yida.demo.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,7 @@ import java.util.Optional;
  */
 @SpringBootTest
 @RunWith(SpringRunner.class)
+@Slf4j
 public class UserControllerTest {
     @Resource
     UserService userService;
@@ -98,5 +100,9 @@ public class UserControllerTest {
         System.out.println(b);
         System.out.println(c);
         System.out.println("======================");
+    }
+
+    @Test
+    public void testFindAll() {
     }
 }
