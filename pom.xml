@@ -111,7 +111,7 @@
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
-            <version>4.5.8</version>
+            <version>4.5.13</version>
         </dependency>
         <!--  actuator 指标监控  非必须 -->
         <dependency>
